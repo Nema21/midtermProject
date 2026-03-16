@@ -1,1 +1,47 @@
-<p>suppliers-details works!</p>
+<h2>Supplier Details</h2>
+
+<div *ngIf="supplier">
+  
+  <div>
+    <label>ID:</label>
+    <input [(ngModel)]="supplier.id" name="id" readonly /> 
+  </div>
+  
+  <div>
+    <label>Supplier Name:</label>
+    <input [(ngModel)]="supplier.supplierName" name="supplierName" />
+  </div>
+  
+  <div>
+    <label>Location:</label>
+    <input [(ngModel)]="supplier.location" name="location" />
+  </div>
+  
+  <div>
+    <label>Email:</label>
+    <input [(ngModel)]="supplier.email" name="email" />
+  </div>
+  
+  <div>
+    <label>Contact Person:</label>
+    <input [(ngModel)]="supplier.contactPerson" name="contactPerson" />
+  </div>
+  
+  <div>
+    <label>Phone:</label>
+    <input [(ngModel)]="supplier.phone" name="phone" />
+  </div>
+  
+  <div>
+    <label>Products Supplied:</label>
+    <textarea [(ngModel)]="supplier.productsSupplied" name="productsSupplied"></textarea>  <!-- Using textarea for array property -->
+  </div>
+
+  <button (click)="saveChanges()">Save</button>
+  <button (click)="goBack()">Back</button>
+  
+</div>
+
+<div *ngIf="!supplier">
+  <p>Loading supplier details...</p>
+</div>
