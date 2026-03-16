@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Supplier } from '../../models/supplier.interface';
 import { SupplierService } from '../../services/supplier.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-suppliers-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './suppliers-list.component.html',
   styleUrl: './suppliers-list.component.css'
 })
