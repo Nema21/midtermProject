@@ -1,73 +1,139 @@
-h2 {
-  color: #004d1f;
-  text-align: center;
-  margin-bottom: 20px;
+/* Main Card Container */
+.product-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-top: 5px solid #006442;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-div {
-  margin-bottom: 15px;
+/* Header Section: Title on Left, Back Button on Right */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
 }
 
+.header-title { 
+  color: #004d33; 
+  font-size: 2rem; 
+  margin: 0;
+}
+
+/* 2-Column Grid Layout */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 50px;
+}
+
+/* Field Alignment */
+.field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  min-height: 35px;
+}
+
+/* Fixed width labels for vertical alignment */
 label {
-  font-size: 16px;
-  color: #004d1f;
-  margin-right: 10px;
+  color: #006442;
+  font-weight: 600;
+  width: 120px; 
+  font-size: 1.2rem;
 }
 
-input, textarea {
-  width: 100%;
+.static-text {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.gray-text { color: #666; }
+
+/* Input Styling */
+.edit-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Description Section (Full Width) */
+.description-section {
+  margin-top: 20px;
+  width: 50%;
+}
+.description-section textarea {
+  width: 100%;       
+  min-height: 80px;  
   padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  resize: both;
+  font-family: inherit;
+}
+.description-section label {
+  display: block;
+  margin-bottom: 8px;
+  color: #006442;
+  font-weight: 600;
 }
 
-input[readonly] {
-  background-color: #f1fdf1;
+/* Bottom Action Section (Edit/Save Buttons) */
+.actions { 
+  margin-top: 30px; 
+  display: flex; 
+  gap: 15px; 
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
 }
 
-textarea {
-  height: 100px;
-}
-
-button {
-  background-color: #66ff66;
-  color: white;
+/* Button Base Styles */
+.btn-save, .btn-action, .btn-back, .btn-cancel {
   padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 10px;
+  border: none;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
 }
 
-button:hover {
-  background-color: #4dff4d;
+/* Green Buttons (Edit and Save) */
+.btn-action, .btn-save { 
+  background: #00a86b; 
+  color: white; 
 }
 
-button:focus {
-  outline: none;
+.btn-action:hover, .btn-save:hover { 
+  background: #008f5a; 
+  transform: translateY(-1px);
 }
 
-button:last-child {
-  background-color: #ff6666;
+/* Gray Button (Back to List) */
+.btn-back { 
+  background: #6c757d; 
+  color: white; 
+  padding: 8px 16px; 
 }
 
-button:last-child:hover {
-  background-color: #ff4d4d;
+.btn-back:hover { 
+  background: #5a6268; 
 }
 
-@media (max-width: 768px) {
-  input, textarea {
-    font-size: 16px;
-    padding: 12px;
-  }
+/* Red Button (Cancel) */
+.btn-cancel {
+  background: #dc3545;
+  color: white;
+}
 
-  button {
-    width: 100%;
-    font-size: 18px;
-    padding: 15px;
-  }
+.btn-cancel:hover {
+  background: #c82333;
 }

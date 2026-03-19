@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Supplier } from '../models/supplier.interface';
-
+// Make the service available throughout the entire app
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
-
+// Mock data array containing 10 diverse supplier objects
   private suppliers: Supplier[] = [
     {
       id: 1,
@@ -100,22 +100,22 @@ export class SupplierService {
   ];
 
   constructor() {}
-
+// Returns the complete list of suppliers for the table view
   getSuppliers(): Supplier[] {
     return this.suppliers;
   }
 
-
+//  Finds a single supplier by their unique ID
   getSupplierById(id: number): Supplier | undefined {
     return this.suppliers.find(supplier => supplier.id === id);
   }
 
-
+// Updates the data in the array when a user saves changes
   updateSupplier(updatedSupplier: Supplier): void {
     const index = this.suppliers.findIndex(
       supplier => supplier.id === updatedSupplier.id
     );
-
+// If the supplier exists, overwrite their old data with the new data
     if (index !== -1) {
       this.suppliers[index] = updatedSupplier;
     }

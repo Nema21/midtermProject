@@ -1,47 +1,72 @@
-<h2>Supplier Details</h2>
+<div class="container" *ngIf="supplier">
+  <div class="product-card">
+    
+    <!-- Header: Shows title and the 'Back' navigation button -->
+    <div class="card-header">
+      <h3 class="header-title">Supplier Details</h3>
+      <button (click)="goBack()" class="btn-back">← Back to List</button>
+    </div>
 
-<div *ngIf="supplier">
-  
-  <div>
-    <label>ID:</label>
-    <input [(ngModel)]="supplier.id" name="id" readonly /> 
-  </div>
-  
-  <div>
-    <label>Supplier Name:</label>
-    <input [(ngModel)]="supplier.supplierName" name="supplierName" />
-  </div>
-  
-  <div>
-    <label>Location:</label>
-    <input [(ngModel)]="supplier.location" name="location" />
-  </div>
-  
-  <div>
-    <label>Email:</label>
-    <input [(ngModel)]="supplier.email" name="email" />
-  </div>
-  
-  <div>
-    <label>Contact Person:</label>
-    <input [(ngModel)]="supplier.contactPerson" name="contactPerson" />
-  </div>
-  
-  <div>
-    <label>Phone:</label>
-    <input [(ngModel)]="supplier.phone" name="phone" />
-  </div>
-  
-  <div>
-    <label>Products Supplied:</label>
-    <textarea [(ngModel)]="supplier.productsSupplied" name="productsSupplied"></textarea>  <!-- Using textarea for array property -->
-  </div>
+    <!-- Data Grid: Displays supplier information in two columns -->
+    <div class="detail-grid">
+      <div class="column">
+        <!-- ID field (Read-only as per requirements) -->
+        <div class="field"><label>ID:</label> <span class="static-text">{{supplier.id}}</span></div>
+        
+        <!-- Location: Switches between text and input box when 'Edit' is clicked -->
+        <div class="field">
+          <label>Location:</label>
+          @if(isEditMode){ <input [(ngModel)]="supplier.location" class="edit-input"> }
+          @else { <span class="static-text gray-text">{{supplier.location}}</span> }
+        </div>
+        
+        <!-- Email field with two-way data binding (ngModel) -->
+        <div class="field">
+          <label>Email:</label>
+          @if(isEditMode){ <input [(ngModel)]="supplier.email" class="edit-input"> }
+          @else { <span class="static-text gray-text">{{supplier.email}}</span> }
+        </div>
+      </div>
 
-  <button (click)="saveChanges()">Save</button>
-  <button (click)="goBack()">Back</button>
-  
-</div>
+      <div class="column">
+        <!-- Name field -->
+        <div class="field">
+          <label>Name:</label>
+          @if(isEditMode){ <input [(ngModel)]="supplier.supplierName" class="edit-input"> }
+          @else { <span class="static-text gray-text">{{supplier.supplierName}}</span> }
+        </div>
+        
+        <!-- Contact Person field -->
+        <div class="field">
+          <label>Contact:</label>
+          @if(isEditMode){ <input [(ngModel)]="supplier.contactPerson" class="edit-input"> }
+          @else { <span class="static-text gray-text">{{supplier.contactPerson}}</span> }
+        </div>
+        
+        <!-- Phone number field -->
+        <div class="field">
+          <label>Phone:</label>
+          @if(isEditMode){ <input [(ngModel)]="supplier.phone" class="edit-input"> }
+          @else { <span class="static-text gray-text">{{supplier.phone}}</span> }
+        </div>
+      </div>
+    </div>
 
-<div *ngIf="!supplier">
-  <p>Loading supplier details...</p>
+    <!-- Products: Displays the array of products supplied -->
+    <div class="description-section">
+      <label>Products:</label>
+      @if(isEditMode){ <textarea [(ngModel)]="supplier.productsSupplied" class="edit-input"></textarea> }
+      @else { <p class="static-text gray-text">{{supplier.productsSupplied}}</p> }
+    </div>
+
+    <!-- Action Buttons: Toggles between 'Edit' and 'Save/Cancel' modes -->
+    <div class="actions">
+      @if(!isEditMode) {
+        <button class="btn-action" (click)="toggleEdit()">Edit</button>
+      } @else {
+        <button (click)="saveChanges()" class="btn-save">Save Changes</button>
+        <button (click)="toggleEdit()" class="btn-cancel">Cancel</button>
+      }
+    </div>
+  </div>
 </div>

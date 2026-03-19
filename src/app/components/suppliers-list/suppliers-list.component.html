@@ -1,8 +1,11 @@
+<!-- Main Page Header -->
 <h2>Suppliers Management</h2>
 
+<!-- Supplier Data Table -->
 <table>
   <thead>
     <tr>
+      <!-- Column headers for identification and contact -->
       <th>ID</th>
       <th>Supplier Name</th>
       <th>Contact Person</th>
@@ -11,14 +14,17 @@
   </thead>
 
   <tbody>
+    <!-- Iterate through the suppliers array using *ngFor -->
     <tr *ngFor="let supplier of suppliers">
+      <!-- Displaying specific properties from each supplier object -->
       <td>{{ supplier.id }}</td>
       <td>{{ supplier.supplierName }}</td>
       <td>{{ supplier.contactPerson }}</td>
+      
       <td>
-       
-        <button (click)="viewSupplierDetails(supplier.id)">
-          View
+        <!-- Button triggers navigation to the details page -->
+        <button class="view-btn" (click)="viewSupplierDetails(supplier.id)">
+          View Details
         </button>
       </td>
     </tr>
